@@ -90,8 +90,18 @@ var finances = [
 // Total Months
 let total = finances.length;
 
+// The net total amount of Profit/Losses over the entire period
+let arr = finances.flat();
+let numbers = arr.filter(
+    element => typeof element === 'number'
+  );
+let sum = numbers.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+
 
 // Output to console
 console.log("Financial Analysis");
 console.log("----------------------------");
 console.log("Total Months:", total);
+console.log("Total: $" + sum);
