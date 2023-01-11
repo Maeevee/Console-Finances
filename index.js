@@ -87,10 +87,10 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
-// Total Months
+// Total Months:
 let total = finances.length;
 
-// The net total amount of Profit/Losses over the entire period
+// The net total amount of Profit/Losses over the entire period:
 let arr = finances.flat();
 let numbers = arr.filter(
     element => typeof element === 'number'
@@ -99,9 +99,25 @@ let sum = numbers.reduce(function (a, b) {
     return a + b;
   }, 0);
 
+// The average of the changes in Profit/Losses over the entire period:
+let changes = [];
+for (let i = 0; i < finances.length - 1; i++) {
+  change.push(finances[i + 1][1] - finances[i][1]);
+}
+
+let totalCh = 0;
+for (var i = 0; i < change.length; i++) {
+    totalCh += change[i];
+}
+
+let average = (totalCh/change.length).toFixed(2);
+
+
+
 
 // Output to console
 console.log("Financial Analysis");
 console.log("----------------------------");
 console.log("Total Months:", total);
 console.log("Total: $" + sum);
+console.log("Average Change $:", average);
