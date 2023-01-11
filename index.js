@@ -96,7 +96,7 @@ let arr = finances.flat();
 let numbers = arr.filter(
     element => typeof element === 'number'
   );
-  
+
 let sum = numbers.reduce(function (a, b) {
     return a + b;
   }, 0);
@@ -117,9 +117,12 @@ let average = (totalCh/change.length).toFixed(2);
 //The greatest increase in profits (date and amount) over the entire period:
 let greatIncr = change.reduce((a, b) => Math.max(a, b));
 
-let MgreatIncr = change.indexOf(greatIncr) + 1;
+let mGreatIncr = change.indexOf(greatIncr) + 1;
 
+//The greatest decrease in losses (date and amount) over the entire period:
+let greatDecr = change.reduce((a, b) => Math.min(a, b));
 
+let mGreatestDecr = change.indexOf(greatDecr) + 1;
 
 // Output to console
 console.log("Financial Analysis");
@@ -127,4 +130,5 @@ console.log("----------------------------");
 console.log("Total Months:", total);
 console.log("Total: $" + sum);
 console.log("Average Change $:", average);
-console.log("Greatest Increase in Profits:", finances[MgreatIncr][0], "($" + greatIncr + ")");
+console.log("Greatest Increase in Profits:", finances[mGreatIncr][0], "($" + greatIncr + ")");
+console.log("Greatest Decrease in Profits:", finances[mGreatestDecr][0], "($" + greatDecr + ")");
