@@ -92,15 +92,17 @@ let total = finances.length;
 
 // The net total amount of Profit/Losses over the entire period:
 let arr = finances.flat();
+
 let numbers = arr.filter(
     element => typeof element === 'number'
   );
+  
 let sum = numbers.reduce(function (a, b) {
     return a + b;
   }, 0);
 
 // The average of the changes in Profit/Losses over the entire period:
-let changes = [];
+let change = [];
 for (let i = 0; i < finances.length - 1; i++) {
   change.push(finances[i + 1][1] - finances[i][1]);
 }
@@ -112,6 +114,10 @@ for (var i = 0; i < change.length; i++) {
 
 let average = (totalCh/change.length).toFixed(2);
 
+//The greatest increase in profits (date and amount) over the entire period:
+let greatIncr = change.reduce((a, b) => Math.max(a, b));
+
+let MgreatIncr = change.indexOf(greatIncr) + 1;
 
 
 
@@ -121,3 +127,4 @@ console.log("----------------------------");
 console.log("Total Months:", total);
 console.log("Total: $" + sum);
 console.log("Average Change $:", average);
+console.log("Greatest Increase in Profits:", finances[MgreatIncr][0], "($" + greatIncr + ")");
